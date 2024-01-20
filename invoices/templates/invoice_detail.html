@@ -1,0 +1,42 @@
+<!-- invoices/templates/invoices/invoice_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Details</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<h1>Invoice Details</h1>
+
+<h2>Invoice #{{ invoice.id }}</h2>
+<p>Date: {{ invoice.date }}</p>
+<p>Customer Name: {{ invoice.customer_name }}</p>
+
+<h2>Invoice Details</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for detail in invoice.details.all %}
+            <tr>
+                <td>{{ detail.description }}</td>
+                <td>{{ detail.quantity }}</td>
+                <td>{{ detail.unit_price }}</td>
+                <td>{{ detail.price }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
